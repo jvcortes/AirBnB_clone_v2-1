@@ -3,7 +3,9 @@
 Contains the class DBStorage
 """
 
-import models
+from os import getenv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 from models.amenity import Amenity
 from models.base_model import BaseModel, Base
 from models.city import City
@@ -11,10 +13,6 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
-from os import getenv
-import sqlalchemy
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
 
 classes = {"Amenity": Amenity, "City": City,
            "Place": Place, "Review": Review, "State": State, "User": User}
@@ -49,7 +47,7 @@ class DBStorage:
                 for obj in objs:
                     key = obj.__class__.__name__ + '.' + obj.id
                     new_dict[key] = obj
-        return (new_dict)
+        return new_dict
 
     def new(self, obj):
         """add the object to the current database session"""
@@ -74,3 +72,21 @@ class DBStorage:
     def close(self):
         """call remove() method on the private session attribute"""
         self.__session.remove()
+
+    def get(self, cls, id):
+        """ Obtains an object from the storage by its class and ID.
+
+       Arguments:
+            cls (class): class of the object.
+            id (str, int, uuid.UUID): ID of the object.
+        """
+
+        if cls and id:
+            for obj in self.all(eval(cls)).values():
+                if obj.id == id:
+                    return obj
+        return None
+
+    def count(self, cls=None):
+        """ Returns the count of the total objects inside the storage. """
+        return len(self.all(cls))
