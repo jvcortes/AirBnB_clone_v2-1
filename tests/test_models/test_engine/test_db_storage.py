@@ -67,6 +67,41 @@ test_db_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+class TestDBStorage(unittest.TestCase):
+    """Test the DBStorage class"""
+
+    def setUp(self):
+        """Setup in every unittest"""
+        os.environ["HBNB_MYSQL_USER"] = ""
+        os.environ["HBNB_MYSQL_PWD"] = ""
+        os.environ["HBNB_MYSQL_DB"] = ""
+
+    def tearDown(self):
+        """tearDown to every unittest"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Setup to do previous of the unittest of the class"""
+
+    @classmethod
+    def tearDownClass(cls):
+        """Teardown to close instance after the unitest of the class"""
+
+    def test_get_method(self):
+        """Test of the get method"""
+        state = State()
+        state1 = State()
+        obj = storage.get("State", state.id)
+        self.assertIs(state, obj)
+        self.assertIsNot(state, state1.id)
+
+    def test_count_method(self):
+        """Test of the count method"""
+        state = State()
+        state1 = State()
+        instances = storage.count("State")
+        self.assertIs(instances, 2)
+
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
