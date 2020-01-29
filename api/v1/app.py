@@ -3,7 +3,7 @@
 Starts the Flask web API.
 """
 import os
-from flask import Flask
+from flask import Flask, jsonify, make_response
 from models import storage
 from api.v1.views import app_views
 
@@ -17,6 +17,13 @@ def db_close(exc):
     """ Closes the database connection. """
     storage.close()
 
+
+@app.errorhandler(404)
+def notFound(error):
+    """ A handler for 404 errors """
+    return make_response(jsonify({
+        "error": "Not found"
+    }), 404)
 
 if __name__ == '__main__':
     port = 5000
