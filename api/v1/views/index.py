@@ -2,7 +2,6 @@
 """
 Defines the index for V1 API.
 """
-import json
 from flask import jsonify, make_response
 from api.v1.views import app_views
 from models import storage
