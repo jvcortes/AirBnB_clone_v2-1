@@ -19,7 +19,7 @@ def db_close(exc):
 
 
 @app.errorhandler(404)
-def notFound(error):
+def not_found(error):
     """ A handler for 404 errors """
     return make_response(jsonify({
         "error": "Not found"
