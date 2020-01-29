@@ -5,7 +5,7 @@ Defines the index for V1 API.
 import models
 import json
 from models import storage
-from flask import Response, jsonify
+from flask import Response
 from api.v1.views import app_views
 
 
