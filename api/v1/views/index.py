@@ -2,12 +2,11 @@
 """
 Defines the index for V1 API.
 """
-import models
 import json
-from models import storage
 from flask import Response, jsonify
 from api.v1.views import app_views
-
+from models import storage
+import models
 
 @app_views.route('/status')
 def status():
