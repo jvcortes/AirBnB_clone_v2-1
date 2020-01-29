@@ -29,7 +29,7 @@ class FileStorage:
         if cls is not None:
             new_dict = {}
             for key, value in self.__objects.items():
-                if cls == value.__class__ or cls == value.__class__.__name__:
+                if cls in (value.__class__, value.__class__.__name__):
                     new_dict[key] = value
             return new_dict
         return self.__objects
@@ -55,7 +55,7 @@ class FileStorage:
                 jo = json.load(f)
             for key in jo:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except:
+        except (FileNotFoundError, ValueError):
             pass
 
     def delete(self, obj=None):
