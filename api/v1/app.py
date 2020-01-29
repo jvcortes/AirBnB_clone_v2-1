@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Starts the Flask web API.
+"""
 import os
 from flask import Flask
 from models import storage
@@ -10,7 +13,8 @@ app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
-def db_close(ext):
+def db_close(exc):
+    """ Closes the database connection. """
     storage.close()
 
 
