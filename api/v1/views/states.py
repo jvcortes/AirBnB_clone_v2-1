@@ -53,6 +53,8 @@ def create():
 
     state = State(**attributes)
     state.save()
+    storage.reload()
+
     return jsonify(state.to_dict()), 201
 
 
@@ -81,6 +83,7 @@ def update(id):
     for name in attributes:
         setattr(state, name, attributes[name])
     state.save()
+    storage.reload()
 
     return jsonify(state.to_dict()), 200
 
@@ -98,4 +101,6 @@ def delete(id):
 
     state.delete()
     storage.save()
+    storage.reload()
+
     return jsonify({}), 200
