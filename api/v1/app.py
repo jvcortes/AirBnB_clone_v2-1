@@ -19,12 +19,12 @@ def db_close(exc):
     storage.close()
 
 
-#  @app.errorhandler(404)
-#  def not_found(error):
-    #  """ A handler for 404 errors """
-    #  return make_response(jsonify({
-        #  "error": "Not found"
-    #  }), 404)
+@app.errorhandler(404)
+def not_found(error):
+    """ A handler for 404 errors """
+    return make_response(jsonify({
+        "error": "Not found"
+    }), 404)
 
 
 if __name__ == '__main__':
