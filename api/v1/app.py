@@ -10,6 +10,7 @@ from api.v1.views import app_views
 
 app = Flask(__name__)
 app.register_blueprint(app_views)
+app.url_map.strict_slashes = False
 
 
 @app.teardown_appcontext
@@ -18,12 +19,13 @@ def db_close(exc):
     storage.close()
 
 
-@app.errorhandler(404)
-def not_found(error):
-    """ A handler for 404 errors """
-    return make_response(jsonify({
-        "error": "Not found"
-    }), 404)
+#  @app.errorhandler(404)
+#  def not_found(error):
+    #  """ A handler for 404 errors """
+    #  return make_response(jsonify({
+        #  "error": "Not found"
+    #  }), 404)
+
 
 if __name__ == '__main__':
     port = 5000
