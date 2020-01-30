@@ -97,4 +97,5 @@ def delete(id):
         abort(404, "Not found")
 
     state.delete()
+    storage.save()
     return jsonify({}), 200
