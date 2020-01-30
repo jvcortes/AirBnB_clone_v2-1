@@ -82,7 +82,7 @@ def update(id):
         setattr(state, name, attributes[name])
     state.save()
 
-    return jsonify(state.to_dict()), 201
+    return jsonify(state.to_dict()), 200
 
 
 @app_views.route('/states/<id>', methods=['DELETE'])
