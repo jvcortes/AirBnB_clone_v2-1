@@ -72,12 +72,6 @@ test_db_storage.py'])
 class TestMethodsDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
 
-    def setUp(self):
-        """Setup in every unittest"""
-
-    def tearDown(self):
-        """tearDown to every unittest"""
-
     @classmethod
     def setUpClass(cls):
         """Setup to do previous of the unittest of the class"""
@@ -97,17 +91,24 @@ class TestMethodsDBStorage(unittest.TestCase):
         """Test of the get method"""
         state = State(name="Colorado")
         state.save()
+        amenity = Amenity(name="Internet")
+        amenity.save()
         obj = storage.get("State", state.id)
         self.assertIs(state, obj)
+        obj1 = storage.get("Amenity", amenity.id)
+        self.assertIs(amenity, obj1)
+        self.assertIs(storage.get("State", "Any id"), None)
 
     def test_count_method(self):
         """Test of the count method"""
+        count = storage.count()
         state = State(name="Colorado")
         state.save()
-        state1 = State(name="Texas")
-        state.save()
-        instances = storage.count("State")
-        self.assertIs(instances, 1)
+        amenity = Amenity(name="Internet")
+        amenity.save()
+        self.assertIs(storage.count("State"), count + 1)
+        self.assertIs(storage.count(), count + 2)
+        self.assertIs(storage.count("User"), 0)
 
 
 class TestDBStorage(unittest.TestCase):
