@@ -8,7 +8,7 @@ from models.state import State
 from api.v1.views import app_views
 
 
-@app_views.route('/states', strict_slashes=False)
+@app_views.route('/states', methods=['GET'])
 def states():
     """
     Lists all the State instances.
@@ -18,7 +18,7 @@ def states():
     return jsonify(all_states)
 
 
-@app_views.route('/states/<id>', strict_slashes=False, methods=['GET'])
+@app_views.route('/states/<id>', methods=['GET'])
 def get(id):
     """
     Gets a State instance by its ID. If no State is found, the function will
@@ -33,7 +33,7 @@ def get(id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states', strict_slashes=False, methods=['POST'])
+@app_views.route('/states', methods=['POST'])
 def create():
     """
     Creates a State instance.
@@ -57,7 +57,7 @@ def create():
     return jsonify(state.to_dict()), 201
 
 
-@app_views.route('/states/<id>', strict_slashes=False, methods=['PUT'])
+@app_views.route('/states/<id>', methods=['PUT'])
 def update(id):
     """
     Updates a State instance.
@@ -86,7 +86,7 @@ def update(id):
     return jsonify(state.to_dict()), 200
 
 
-@app_views.route('/states/<id>', strict_slashes=False, methods=['DELETE'])
+@app_views.route('/states/<id>', methods=['DELETE'])
 def delete(id):
     """
     Deletes a State instance.
