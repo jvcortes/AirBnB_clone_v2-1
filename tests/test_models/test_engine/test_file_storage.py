@@ -72,42 +72,38 @@ test_file_storage.py'])
 class TestMethodsFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
 
-    def setUp(self):
-        """Setup in every unittest"""
-
-    def tearDown(self):
-        """tearDown to every unittest"""
-
     @classmethod
-    def setUpClass(cls):
-        """Setup to do previous of the unittest of the class"""
-        os.environ["HBNB_MYSQL_USER"] = "hbnb_test"
-        os.environ["HBNB_MYSQL_PWD"] = "hbnb_test_pwd"
-        os.environ["HBNB_MYSQL_DB"] = "hbnb_test_db"
-        os.environ["HBNB_TYPE_STORAGE"] = "db"
+    def setUp(cls):
+        """set up of the previous execution of the class"""
+        storage = FileStorage()
 
-    @classmethod
-    def tearDownClass(cls):
-        """Teardown to close instance after the unitest of the class"""
-        os.environ["HBNB_MYSQL_USER"] = "hbnb_dev"
-        os.environ["HBNB_MYSQL_PWD"] = "hbnb_dev_pwd"
-        os.environ["HBNB_MYSQL_DB"] = "hbnb_dev_db"
-
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db',
+                     "not testing file storage")
     def test_get_method(self):
         """Test of the get method"""
         state = State(name="Colorado")
         state.save()
+        amenity = Amenity(name="Internet")
+        amenity.save()
         obj = storage.get("State", state.id)
         self.assertIs(state, obj)
+        obj1 = storage.get("Amenity", amenity.id)
+        self.assertIs(amenity, obj1)
+        self.assertIs(storage.get("State", "Any id"), None)
 
+    @unittest.skipIf(os.getenv('HBNB_TYPE_STORAGE') == 'db',
+                     "not testing file storage")
     def test_count_method(self):
         """Test of the count method"""
-        state = State(name="Colorado")
-        state.save()
-        state1 = State(name="Texas")
-        state.save()
-        instances = storage.count("State")
-        self.assertIs(instances, 3)
+        count = storage.count()
+        len_all = len(storage.all())
+        self.assertIs(count, len_all)
+        self.assertEqual(storage.count("State"), len(storage.all("State")))
+        state = State()
+        state.save
+        self.assertIs(storage.count(), len_all)
+        self.assertEqual(storage.count("State"), len(storage.all("State")))
+        self.assertIs(storage.count("User"), 0)
 
 
 class TestFileStorage(unittest.TestCase):
