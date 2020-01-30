@@ -8,7 +8,7 @@ from models.state import State
 from api.v1.views import app_views
 
 
-@app_views.route('/states')
+@app_views.route('/states', strict_slashes=False)
 def states():
     """
     Lists all the State instances.
@@ -18,7 +18,7 @@ def states():
     return jsonify(all_states)
 
 
-@app_views.route('/states/<id>', methods=['GET'])
+@app_views.route('/states/<id>', strict_slashes=False, methods=['GET'])
 def get(id):
     """
     Gets a State instance by its ID. If no State is found, the function will
@@ -33,7 +33,7 @@ def get(id):
     return jsonify(state.to_dict())
 
 
-@app_views.route('/states', methods=['POST'])
+@app_views.route('/states', strict_slashes=False, methods=['POST'])
 def create():
     """
     Creates a State instance.
@@ -53,12 +53,11 @@ def create():
 
     state = State(**attributes)
     state.save()
-    storage.reload()
 
     return jsonify(state.to_dict()), 201
 
 
-@app_views.route('/states/<id>', methods=['PUT'])
+@app_views.route('/states/<id>', strict_slashes=False, methods=['PUT'])
 def update(id):
     """
     Updates a State instance.
@@ -83,12 +82,11 @@ def update(id):
     for name in attributes:
         setattr(state, name, attributes[name])
     state.save()
-    storage.reload()
 
     return jsonify(state.to_dict()), 200
 
 
-@app_views.route('/states/<id>', methods=['DELETE'])
+@app_views.route('/states/<id>', strict_slashes=False, methods=['DELETE'])
 def delete(id):
     """
     Deletes a State instance.
@@ -101,6 +99,5 @@ def delete(id):
 
     state.delete()
     storage.save()
-    storage.reload()
 
     return jsonify({}), 200
