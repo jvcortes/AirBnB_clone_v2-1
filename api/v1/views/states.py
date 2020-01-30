@@ -2,7 +2,7 @@
 """
 Defines the API States endpoint.
 """
-from flask import jsonify, request
+from flask import jsonify, request, abort
 from models import storage
 from models.state import State
 from api.v1.views import app_views
@@ -29,7 +29,7 @@ def get(id):
     """
     state = storage.get("State", id)
     if not state:
-        return "Not found", 404
+        abort(404, "Not found")
     return jsonify(state.to_dict())
 
 
@@ -46,10 +46,10 @@ def create():
     """
     attributes = request.get_json()
     if not attributes:
-        return "Not a JSON", 400
+        abort(400, "Not a JSON")
 
     if "name" not in attributes:
-        return "Missing name", 400
+        abort(400, "Missing name")
 
     state = State(**attributes)
     state.save()
@@ -68,7 +68,7 @@ def update(id):
     """
     attributes = request.get_json()
     if not attributes:
-        return "Not a JSON", 400
+        abort(400, "Not a JSON")
 
     attributes.pop("id", None)
     attributes.pop("created_at", None)
@@ -76,7 +76,7 @@ def update(id):
 
     state = storage.get("State", id)
     if not state:
-        return "Not found", 404
+        abort(404, "Not found")
 
     for name in attributes:
         setattr(state, name, attributes[name])
@@ -94,7 +94,7 @@ def delete(id):
     """
     state = storage.get("State", id)
     if not state:
-        return "Not found", 404
+        abort(404, "Not found")
 
     state.delete()
     return jsonify('{}'), 200
