@@ -27,10 +27,10 @@ def get(id):
     Arguments:
         id (str): State
     """
-    state = storage.get("State", id).to_dict()
+    state = storage.get("State", id)
     if not state:
         return "Not found", 404
-    return jsonify(state)
+    return jsonify(state.to_dict())
 
 
 @app_views.route('/states', methods=['POST'])
