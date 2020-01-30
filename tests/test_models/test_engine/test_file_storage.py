@@ -6,6 +6,7 @@ Contains the TestFileStorageDocs classes
 from datetime import datetime
 import inspect
 import models
+from models import storage
 from models.engine import file_storage
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -66,6 +67,47 @@ test_file_storage.py'])
                              "{:s} method needs a docstring".format(func[0]))
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
+
+
+class TestMethodsFileStorage(unittest.TestCase):
+    """Test the FileStorage class"""
+
+    def setUp(self):
+        """Setup in every unittest"""
+
+    def tearDown(self):
+        """tearDown to every unittest"""
+
+    @classmethod
+    def setUpClass(cls):
+        """Setup to do previous of the unittest of the class"""
+        os.environ["HBNB_MYSQL_USER"] = "hbnb_test"
+        os.environ["HBNB_MYSQL_PWD"] = "hbnb_test_pwd"
+        os.environ["HBNB_MYSQL_DB"] = "hbnb_test_db"
+        os.environ["HBNB_TYPE_STORAGE"] = "db"
+
+    @classmethod
+    def tearDownClass(cls):
+        """Teardown to close instance after the unitest of the class"""
+        os.environ["HBNB_MYSQL_USER"] = "hbnb_dev"
+        os.environ["HBNB_MYSQL_PWD"] = "hbnb_dev_pwd"
+        os.environ["HBNB_MYSQL_DB"] = "hbnb_dev_db"
+
+    def test_get_method(self):
+        """Test of the get method"""
+        state = State(name="Colorado")
+        state.save()
+        obj = storage.get("State", state.id)
+        self.assertIs(state, obj)
+
+    def test_count_method(self):
+        """Test of the count method"""
+        state = State(name="Colorado")
+        state.save()
+        state1 = State(name="Texas")
+        state.save()
+        instances = storage.count("State")
+        self.assertIs(instances, 3)
 
 
 class TestFileStorage(unittest.TestCase):

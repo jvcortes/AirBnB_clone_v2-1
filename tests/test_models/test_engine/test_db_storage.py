@@ -69,14 +69,11 @@ test_db_storage.py'])
                             "{:s} method needs a docstring".format(func[0]))
 
 
-class TestDBStorage(unittest.TestCase):
+class TestMethodsDBStorage(unittest.TestCase):
     """Test the DBStorage class"""
 
     def setUp(self):
         """Setup in every unittest"""
-        os.environ["HBNB_MYSQL_USER"] = ""
-        os.environ["HBNB_MYSQL_PWD"] = ""
-        os.environ["HBNB_MYSQL_DB"] = ""
 
     def tearDown(self):
         """tearDown to every unittest"""
@@ -84,10 +81,17 @@ class TestDBStorage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """Setup to do previous of the unittest of the class"""
+        os.environ["HBNB_MYSQL_USER"] = "hbnb_test"
+        os.environ["HBNB_MYSQL_PWD"] = "hbnb_test_pwd"
+        os.environ["HBNB_MYSQL_DB"] = "hbnb_test_db"
+        os.environ["HBNB_TYPE_STORAGE"] = "db"
 
     @classmethod
     def tearDownClass(cls):
         """Teardown to close instance after the unitest of the class"""
+        os.environ["HBNB_MYSQL_USER"] = "hbnb_dev"
+        os.environ["HBNB_MYSQL_PWD"] = "hbnb_dev_pwd"
+        os.environ["HBNB_MYSQL_DB"] = "hbnb_dev_db"
 
     def test_get_method(self):
         """Test of the get method"""
@@ -103,10 +107,10 @@ class TestDBStorage(unittest.TestCase):
         state1 = State(name="Texas")
         state.save()
         instances = storage.count("State")
-        self.assertIs(instances, 2)
+        self.assertIs(instances, 1)
 
 
-class TestFileStorage(unittest.TestCase):
+class TestDBStorage(unittest.TestCase):
     """Test the FileStorage class"""
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_all_returns_dict(self):
