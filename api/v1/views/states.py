@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
-Defines the API States endpoint.
+Defines the API States endpoint
 """
+
 from flask import jsonify, request, abort
 from models import storage
 from models.state import State
