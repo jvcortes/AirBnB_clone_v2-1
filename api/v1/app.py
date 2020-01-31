@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
-Starts the Flask web API.
+Starts the Flask web API
 """
+
 import os
 from flask import Flask, jsonify, make_response
 from models import storage
