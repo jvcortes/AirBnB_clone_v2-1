@@ -27,7 +27,8 @@ The RESTful API is the second segment,its purpose is to generate by means of the
 * [License](#license)
 
 ## Environment
-This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
+This project is interpreted/tested on Ubuntu 14.04 LTS
+- Using python3 (version 3.4.3)
 
 ## Installation
 * Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
