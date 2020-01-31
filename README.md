@@ -1,6 +1,8 @@
-# AirBnB Clone - The Console
+# AirBnB Clone - RESTful API
 <a href="https://holbertonschool.com"><img src="https://i.ibb.co/RyBcXY6/cherry72.png" align="right" width="200" height="200" alt="cherry72" border="0"></a>
+
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
+
 
 #### Functionalities of this command interpreter:
 * Create a new object (ex: a new User or a new Place)
@@ -8,6 +10,11 @@ The console is the first segment of the AirBnB project at Holberton School that 
 * Do operations on objects (count, compute stats, etc...)
 * Update attributes of an object
 * Destroy an object
+
+### Functionalities in addition of RESTful API
+* Addition of routes through url
+* Manage information through http
+* Transfer of information via json
 
 ## Table of Content
 * [Environment](#environment)
