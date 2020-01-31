@@ -19,13 +19,13 @@ def states():
 
 
 @app_views.route('/states/<id>', methods=['GET'])
-def get(id):
+def get_state(id):
     """
     Gets a State instance by its ID. If no State is found, the function will
     return a 404 response.
 
     Arguments:
-        id (str): State
+        id (str): state ID
     """
     state = storage.get("State", id)
     if not state:
@@ -34,7 +34,7 @@ def get(id):
 
 
 @app_views.route('/states', methods=['POST'])
-def create():
+def create_state():
     """
     Creates a State instance.
 
@@ -58,7 +58,7 @@ def create():
 
 
 @app_views.route('/states/<id>', methods=['PUT'])
-def update(id):
+def update_state(id):
     """
     Updates a State instance.
 
@@ -66,6 +66,9 @@ def update(id):
     400 response.
 
     If no state is found, the function will return a 404 response.
+
+    Arguments:
+        id (str): state ID
     """
     attributes = request.get_json()
     if not attributes:
@@ -87,11 +90,14 @@ def update(id):
 
 
 @app_views.route('/states/<id>', methods=['DELETE'])
-def delete(id):
+def delete_state(id):
     """
     Deletes a State instance.
 
     If no state is found, the function will return a 404 response.
+
+    Arguments:
+        id (str): state ID
     """
     state = storage.get("State", id)
     if not state:
