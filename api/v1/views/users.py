@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
-Defines the API Users endpoint.
+Defines the API Users endpoint
 """
+
 from flask import jsonify, request, abort
 from models import storage
 from models.user import User
