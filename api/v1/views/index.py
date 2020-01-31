@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
-Defines the index for V1 API.
+Defines the index for V1 API
 """
+
 from flask import jsonify, make_response
 from api.v1.views import app_views
 from models import storage
