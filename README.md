@@ -1,5 +1,9 @@
-# AirBnB Clone - The Console
+# AirBnB Clone - RESTful API
+<a href="https://holbertonschool.com"><img src="https://i.ibb.co/RyBcXY6/cherry72.png" align="right" width="200" height="200" alt="cherry72" border="0"></a>
+
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A command interpreter is created in this segment to manage objects for the AirBnB(HBnB) website.
+
+The RESTful API is the second segment,its purpose is to generate by means of the use of flask in python the routes and communication through http for the generation of the respective URLs to the project and its needs.
 
 #### Functionalities of this command interpreter:
 * Create a new object (ex: a new User or a new Place)
@@ -8,18 +12,23 @@ The console is the first segment of the AirBnB project at Holberton School that 
 * Update attributes of an object
 * Destroy an object
 
+#### Functionalities in addition of RESTful API
+* Addition of routes through url
+* Manage information through http
+* Transfer of information via json
+
 ## Table of Content
 * [Environment](#environment)
 * [Installation](#installation)
 * [File Descriptions](#file-descriptions)
-* [Usage](#usage)
 * [Examples of use](#examples-of-use)
 * [Bugs](#bugs)
 * [Authors](#authors)
 * [License](#license)
 
 ## Environment
-This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.4.3)
+This project is interpreted/tested on Ubuntu 14.04 LTS
+- Using python3 (version 3.4.3)
 
 ## Installation
 * Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
@@ -154,12 +163,12 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
-Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
-Jennifer Huang - [Github](https://github.com/jhuang1012) / [Twitter](https://twitter.com/earthtojhuang)
-Nicolás Morán - [Github](https://github.com/nickmoran06) / [Twitter](https://twitter.com/nickmoran06)
-Javier Feo Cortés - [Github](https://github.com/jvcortes) / [Twitter](https://twitter.com/viervc)
+forked by AirBnB_clone_v2 by:
+- Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
+- Jennifer Huang - [Github](https://github.com/jhuang1012) / [Twitter](https://twitter.com/earthtojhuang)
+#### AirBnB_clone_v3 by:
+- Nicolás Morán - [Github](https://github.com/nickmoran06) / [Twitter](https://twitter.com/nickmoran06)
+- Javier Feo Cortés - [Github](https://github.com/jvcortes) / [Twitter](https://twitter.com/viervc)
 
-
-Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection. 

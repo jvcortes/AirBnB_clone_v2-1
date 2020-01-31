@@ -124,4 +124,3 @@ def delete_place(id):
     storage.save()
 
     return jsonify({}), 200
-
