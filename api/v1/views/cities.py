@@ -15,7 +15,7 @@ def cities(state_id):
 
     If no State instance is found, the function will return a 404 response.
 
-    state_id (str): state ID.
+    state_id (str): State ID.
     """
     if not storage.get("State", state_id):
         abort(404, "Not found")
@@ -33,7 +33,7 @@ def get_city(id):
     return a 404 response.
 
     Arguments:
-        id (str): city ID
+        id (str): City ID
     """
     city = storage.get("City", id)
     if not city:
@@ -105,9 +105,9 @@ def update_city(id):
 @app_views.route('/cities/<id>', methods=['DELETE'])
 def delete_city(id):
     """
-    Deletes a State instance.
+    Deletes a City instance.
 
-    If no state is found, the function will return a 404 response.
+    If no city is found, the function will return a 404 response.
     """
     city = storage.get("City", id)
     if not city:
