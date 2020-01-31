@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+
 """
-Defines the API Places endpoint.
+Defines the API Places endpoint
 """
+
 from flask import jsonify, request, abort
 from models import storage
 from models.place import Place
