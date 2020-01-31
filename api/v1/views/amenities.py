@@ -19,7 +19,7 @@ def amenities():
 
 
 @app_views.route('/amenities/<amenity_id>', methods=['GET'])
-def get_amenity(id):
+def get_amenity(amenity_id):
     """
     Gets a Amenity instance by its ID. If no Amenity is found,
     the function will return a 404 response.
@@ -27,7 +27,7 @@ def get_amenity(id):
     Arguments:
         id (str): Amenity
     """
-    amenity = storage.get("Amenity", id)
+    amenity = storage.get("Amenity", amenity_id)
     if not amenity:
         abort(404, "Not found")
     return jsonify(amenity.to_dict())
@@ -57,8 +57,8 @@ def create_amenity():
     return jsonify(amenity.to_dict()), 201
 
 
-@app_views.route('/amenities/<id>', methods=['PUT'])
-def update_amenity(id):
+@app_views.route('/amenities/<amenity_id>', methods=['PUT'])
+def update_amenity(amenity_id):
     """
     Updates a Amenity instance.
 
@@ -71,11 +71,11 @@ def update_amenity(id):
     if not attributes:
         abort(400, "Not a JSON")
 
-    attributes.pop("id", None)
+    attributes.pop("amenity_id", None)
     attributes.pop("created_at", None)
     attributes.pop("updated_at", None)
 
-    amenity = storage.get("Amenity", id)
+    amenity = storage.get("Amenity", amenity_id)
     if not amenity:
         abort(404, "Not found")
 
@@ -86,14 +86,14 @@ def update_amenity(id):
     return jsonify(amenity.to_dict()), 200
 
 
-@app_views.route('/amenities/<id>', methods=['DELETE'])
-def delete_amenity(id):
+@app_views.route('/amenities/<amenity_id>', methods=['DELETE'])
+def delete_amenity(amenity_id):
     """
     Deletes a Amenity instance.
 
     If no amenity is found, the function will return a 404 response.
     """
-    amenity = storage.get("Amenity", id)
+    amenity = storage.get("Amenity", amenity_id)
     if not amenity:
         abort(404, "Not found")
 
