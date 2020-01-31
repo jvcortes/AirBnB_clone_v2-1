@@ -87,6 +87,7 @@ class TestMethodsDBStorage(unittest.TestCase):
         os.environ["HBNB_MYSQL_PWD"] = "hbnb_dev_pwd"
         os.environ["HBNB_MYSQL_DB"] = "hbnb_dev_db"
 
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_get_method(self):
         """Test of the get method"""
         state = State(name="Colorado")
@@ -99,6 +100,7 @@ class TestMethodsDBStorage(unittest.TestCase):
         self.assertIs(amenity, obj1)
         self.assertIs(storage.get("State", "Any id"), None)
 
+    @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
     def test_count_method(self):
         """Test of the count method"""
         count = storage.count()
