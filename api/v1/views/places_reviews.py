@@ -43,7 +43,7 @@ def get_review(id):
 
 
 @app_views.route('/places/<place_id>/reviews', methods=['POST'])
-def create_place(place_id):
+def create_review(place_id):
     """
     Creates a Review instance.
 
