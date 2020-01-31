@@ -154,12 +154,12 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
+forked by AirBnB_clone_v2 by:
 - Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 - Jennifer Huang - [Github](https://github.com/jhuang1012) / [Twitter](https://twitter.com/earthtojhuang)
+AirBnB_clone_v3 by:
 - Nicolás Morán - [Github](https://github.com/nickmoran06) / [Twitter](https://twitter.com/nickmoran06)
 - Javier Feo Cortés - [Github](https://github.com/jvcortes) / [Twitter](https://twitter.com/viervc)
 
-
-Second part of Airbnb: Joann Vuong
 ## License
 Public Domain. No copy write protection. 
