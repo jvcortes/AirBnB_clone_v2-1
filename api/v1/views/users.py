@@ -92,7 +92,7 @@ def update_user(id):
     return jsonify(user.to_dict()), 200
 
 
-@app_views.route('/user/<id>', methods=['DELETE'])
+@app_views.route('/users/<id>', methods=['DELETE'])
 def delete_user(id):
     """
     Deletes a User instance.
