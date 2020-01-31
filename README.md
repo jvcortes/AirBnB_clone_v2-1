@@ -166,7 +166,7 @@ No known bugs at this time.
 forked by AirBnB_clone_v2 by:
 - Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 - Jennifer Huang - [Github](https://github.com/jhuang1012) / [Twitter](https://twitter.com/earthtojhuang)
-AirBnB_clone_v3 by:
+#### AirBnB_clone_v3 by:
 - Nicolás Morán - [Github](https://github.com/nickmoran06) / [Twitter](https://twitter.com/nickmoran06)
 - Javier Feo Cortés - [Github](https://github.com/jvcortes) / [Twitter](https://twitter.com/viervc)
 
