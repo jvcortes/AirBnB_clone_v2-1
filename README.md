@@ -12,7 +12,7 @@ The RESTful API is the second segment,its purpose is to generate by means of the
 * Update attributes of an object
 * Destroy an object
 
-### Functionalities in addition of RESTful API
+#### Functionalities in addition of RESTful API
 * Addition of routes through url
 * Manage information through http
 * Transfer of information via json
