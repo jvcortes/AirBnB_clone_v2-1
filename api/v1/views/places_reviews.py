@@ -65,6 +65,8 @@ def create_review(place_id):
 
     if "user_id" not in attributes:
         abort(400, "Missing user_id")
+    if not storage.get("User", attributes["user_id"]):
+        abort(404, "Not found")
 
     if "text" not in attributes:
         abort(400, "Missing text")
